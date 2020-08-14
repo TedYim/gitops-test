@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: demo-aws
-          image: 941002153439.dkr.ecr.cn-northwest-1.amazonaws.com.cn/test:3.0.0
+          image: 941002153439.dkr.ecr.cn-northwest-1.amazonaws.com.cn/test:4.0.0
           resources:
             requests:
               memory: "128Mi"

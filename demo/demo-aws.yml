@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: demo-aws
+spec:
+  selector:
+    matchLabels:
+      app: demo-aws
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: demo-aws
+    spec:
+      containers:
+        - name: demo-aws
+          image: 941002153439.dkr.ecr.cn-northwest-1.amazonaws.com.cn/test:2.0.0
+          resources:
+            requests:
+              memory: "128Mi"
+            limits:
+              memory: "512Mi"
+          env:
+            - name: JAVA_OPTS
+              value: "-XX:MaxRAMPercentage=80.0"
+            - name: SERVER_PORT
+              value: "8080"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    service.beta.kubernetes.io/aws-load-balancer-backend-protocol: http
+  name: demo-aws
+  labels:
+    app: demo-aws
+spec:
+  type: LoadBalancer
+  selector:
+    app: demo-aws
+  ports:
+    - name: http
+      port: 8080
+      targetPort: 8080
+  

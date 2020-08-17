@@ -31,6 +31,7 @@ kind: Service
 metadata:
   annotations:
     service.beta.kubernetes.io/aws-load-balancer-backend-protocol: http
+    service.beta.kubernetes.io/aws-load-balancer-type: "nlb"
   name: demo-aws
   labels:
     app: demo-aws
@@ -40,6 +41,6 @@ spec:
     app: demo-aws
   ports:
     - name: http
-      port: 8080
+      port: 80
       targetPort: 8080
   

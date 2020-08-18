@@ -17,7 +17,7 @@ spec:
           image: 941002153439.dkr.ecr.cn-northwest-1.amazonaws.com.cn/test:4.0.0
           resources:
             requests:
-              memory: "128Mi"
+              memory: "256Mi"
             limits:
               memory: "512Mi"
           env:
